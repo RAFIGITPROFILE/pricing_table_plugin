@@ -11,8 +11,8 @@ class Vxpt_List extends WP_List_Table
     {
         // Set parent defaults.
         parent::__construct([
-            'singular' => __('Pricing Table', 'vx-pricing-table'),
-            'plural'   => __('Pricing Tables', 'vx-pricing-table'),
+            'singular' => esc_html__('Pricing Table', 'vx-pricing-table'),
+            'plural'   => esc_html__('Pricing Tables', 'vx-pricing-table'),
             'ajax'     => false,
         ]);
     }
@@ -144,9 +144,9 @@ class Vxpt_List extends WP_List_Table
     {
         return [
             'cb'         => '<input type="checkbox" />', // Render a checkbox corresponding text.
-            'pt_title'   => __('Price table title', 'vx-pricing-table'),
-            'shortcode'  => __('Shortcode', 'vx-pricing-table'),
-            'updated_at' => __('Updated date', 'vx-pricing-table'),
+            'pt_title'   => esc_html__('Price table title', 'vx-pricing-table'),
+            'shortcode'  => esc_html__('Shortcode', 'vx-pricing-table'),
+            'updated_at' => esc_html__('Updated date', 'vx-pricing-table'),
         ];
     }
 

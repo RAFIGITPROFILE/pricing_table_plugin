@@ -59,7 +59,7 @@ class Vxpt_Admin
         24
     );
 
-    add_submenu_page('vxpt_admin', 'Add new pricing table', __('Add new', 'vx-pricing-table'), 'edit_others_posts', 'vxpt_admin_add_page', [$this, 'renderAddPageContent']);
+    add_submenu_page('vxpt_admin', 'Add new pricing table', esc_html__('Add new', 'vx-pricing-table'), 'edit_others_posts', 'vxpt_admin_add_page', [$this, 'renderAddPageContent']);
     add_action("load-$hook", [$this, 'screen_option']);
 }
 
