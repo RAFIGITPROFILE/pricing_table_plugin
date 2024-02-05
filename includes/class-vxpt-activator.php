@@ -12,7 +12,8 @@ public static function activate(){
     if (function_exists('is_multisite') && is_multisite()){
         $old_blog = $wpdb->blogid;
 
-        $blogids = $wpdb->get_col( $wpdb->prepare( "SELECT `blog_id` FROM $wpdb->blogs" ) );
+        $blogids = $wpdb->get_col( $wpdb->prepare( "SELECT `blog_id` FROM {$wpdb->base_prefix}blogs" ) );
+
         foreach ($blogids as $blogid){
             switch_to_blog($blog_id);
             (new Vxpt_Activator)->create_tables();

@@ -2,8 +2,7 @@
 /**
  * Admin panel for editing pricing table.
  */
-
- if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 global $wpdb;
 $results_templates = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_templates", ARRAY_A);
 $currencies = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_currency", ARRAY_A);
@@ -35,7 +34,6 @@ $currencies = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_currency", A
                     <button class="tablinks" onclick="vxpt_admin_tab(event, 'custom_styles')">
                         <span class="dashicons dashicons-admin-customizer"></span>
                         <?php esc_html_e("Styles", 'vx-pricing-table'); ?>
-
                     </button>
                 </div>
                 <!-- Tab content -->
@@ -64,7 +62,7 @@ $currencies = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_currency", A
                     </table>
                 </div>
                 <div id="Theme" class="tabcontent theme">
-                    <h3><?php esc_html_e("Choose Template", 'vx-pricing-table'); ?></h3>
+                    <h3><?php esc_html_e("Select Template", 'vx-pricing-table'); ?></h3>
                     <div class="vxpt_template_list">
                         <?php
                         foreach ($results_templates as $template) {
@@ -109,8 +107,8 @@ $currencies = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_currency", A
 let computed_feature_id;
 let computed_column_id;
 let price_suffixes = ['<?php esc_html_e('Per hour', 'vx-pricing-table');?>',
-    '<?php esc_html_e('Per day', 'vx-pricing-table');?>',
-    '<?php esc_html_e('Per month', 'vx-pricing-table');?>', '<?php esc_html_e('Per year', 'vx-pricing-table');?>',
+    '<?php esc_html_e('Per day', 'vx-pricing-table');?>', '<?php esc_html_e('Per month', 'vx-pricing-table');?>',
+    '<?php esc_html_e('Per year', 'vx-pricing-table');?>', '<?php esc_html_e('Per night', 'vx-pricing-table');?>',
     '<?php esc_html_e('None', 'vx-pricing-table');?>'
 ];
 let option = '';
@@ -153,7 +151,7 @@ function add_column() {
     computed_column_id = parseInt(jQuery("#column_count").val());
     let price_suffix = "<select name='fields[" + computed_column_id + "][column_price_suffix]'>" + option + "</select>";
     let currency_select = "<select name='fields[" + computed_column_id +
-        "][column_price_currency]'><?php echo esc_html($currency_options);?></select>";
+        "][column_price_currency]'><?php echo $currency_options;?></select>";
     let new_column_value = "<div class='vxpt_table_column' id='tbl_column" + computed_column_id +
         "'><div class='vxpt_table_row'><label><?php esc_html_e('Name', 'vx-pricing-table');?></label><input type='hidden' name='fields[" +
         computed_column_id +
@@ -162,19 +160,17 @@ function add_column() {
         computed_column_id +
         "][description]'></textarea></div>" +
         "<div class='vxpt_table_row'><label><?php esc_html_e('Currency', 'vx-pricing-table');?></label>" +
-        currency_select +
-        "</div>" +
+        currency_select + "</div>" +
         "<div class='vxpt_table_row'><label><?php esc_html_e('Price', 'vx-pricing-table');?></label><input type='text' name='fields[" +
         computed_column_id + "][column_price]'/></div>" +
         "<div class='vxpt_table_row'><label><?php esc_html_e('Price suffix', 'vx-pricing-table');?></label>" +
-        price_suffix +
-        "</div>" +
+        price_suffix + "</div>" +
         "<div class='vxpt_table_row'><label><?php esc_html_e('Button face text', 'vx-pricing-table');?></label><input type='text' name='fields[" +
         computed_column_id + "][column_button_face_text]'/></div>" +
         "<div class='vxpt_table_row'><label><?php esc_html_e('Button url', 'vx-pricing-table');?></label><input type='text' name='fields[" +
         computed_column_id + "][column_button_url]'/></div>" +
-        "<div class='vxpt_table_row vxpt_table_row_features_head'><span class='features_title'><?php echo esc_html__('Features', 'vx-pricing-table');?></span><a href='javascript:;' class='add_feature' onclick='add_feature(" +
-
+        "<div class='vxpt_table_row vxpt_table_row_features_head'><span class='features_title'><?php esc_html_e('Features', 'vx-pricing-table');?></span><a href='javascript:;' class='add_feature' onclick='add_feature(" +
+        computed_column_id +
         ")'><span class='dashicons dashicons-plus-alt'></span><?php esc_html_e('add feature', 'vx-pricing-table');?></a></div><input type='hidden' name='column" +
         computed_column_id + "_feature_count' id='column" + computed_column_id +
         "_feature_count' value='0' /><div class='vxpt_table_row vxpt_table_row_features feature_column_container' id='column" +

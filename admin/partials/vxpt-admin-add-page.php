@@ -49,7 +49,7 @@ $currencies = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}vxpt_currency", A
                             <td>
                                 <a class="vxpt_add_column" href="javascript:;" onclick="add_column()">
                                     <span class="dashicons dashicons-welcome-add-page"></span>
-                                    <?php esc_html_e('add column', 'vx-pricing-table');?>
+                                    <?php esc_html_e('Add column', 'vx-pricing-table');?>
                                 </a>
                                 <input type="hidden" name="column_count" id="column_count" value="0" />
                             </td>

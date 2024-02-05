@@ -20,7 +20,10 @@ class Vxpt_Public
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/vxpt-public.css', array(), $this->version, 'all');
 
         if (!wp_style_is('fontawesome', 'enqueued')) {
-            wp_register_style('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', false, '5.15.4');
+            // wp_register_style('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', false, '5.15.4');
+
+            wp_register_style('fontawesome', get_template_directory_uri() . '/assets/font-awesome/css/all.min.css', false, '5.15.4');
+           
 
             wp_enqueue_style('fontawesome');
         }
